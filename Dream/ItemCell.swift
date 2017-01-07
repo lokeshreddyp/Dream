@@ -1,0 +1,22 @@
+//
+//  ItemCell.swift
+//  Dream
+//
+//  Created by lokeshreddy on 1/7/17.
+//  Copyright © 2017 lokeshreddy. All rights reserved.
+//
+
+import UIKit
+
+class ItemCell: UITableViewCell {
+
+    @IBOutlet weak var thumb: UIImageView!
+    
+    @IBOutlet weak var tittle: UILabel!
+    
+    
+    @IBOutlet weak var details: UILabel!
+    
+    @IBOutlet weak var price: UILabel!
+    
+}
