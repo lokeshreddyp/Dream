@@ -23,7 +23,8 @@ class MainVC: UIViewController ,UITableViewDelegate , UITableViewDataSource, NSF
         super.viewDidLoad()
         tableview.delegate = self
         tableview.dataSource = self
-       // testdata()
+        
+      //  testdata()
         attemptFetch()
         
         
@@ -81,11 +82,11 @@ let dateSort = NSSortDescriptor(key: "created", ascending: false)
 
 fetchRequest.sortDescriptors = [dateSort]
         
-        let fetchresultscontroller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext:context, sectionNameKeyPath: nil, cacheName: nil)
+        let fetchresultscontroller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext:appdelegate_context, sectionNameKeyPath: nil, cacheName:nil)
+        
+        fetchresultscontroller.delegate = self
         
         self.fetchresultscontroller = fetchresultscontroller
-        
-        
         do {
             try fetchresultscontroller.performFetch()
         }
@@ -141,16 +142,16 @@ fetchRequest.sortDescriptors = [dateSort]
     
     
     func testdata() {
-        let item = Item(context: context)
+        let item = Item(context: appdelegate_context)
         item.tittle = "book1"
         item.price = 1000
         item.details = "hello this is test one to check whether data inside table view is working properly or not.Just a check"
        
-        let item1 = Item(context: context)
+        let item1 = Item(context: appdelegate_context)
         item1.tittle = "book2"
         item1.price = 100
         item1.details = "hello this is test one to check whether data inside table view is working properly or not.Just a check"
-        let item2 = Item(context: context)
+        let item2 = Item(context: appdelegate_context)
         item2.tittle = "book3"
         item2.price = 10
         item2.details = "hello this is test one to check whether data inside table view is working properly or not.Just a check"

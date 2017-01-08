@@ -19,14 +19,14 @@
         <relationship name="toItem" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Item" inverseName="toItemType" inverseEntity="Item" syncable="YES"/>
     </entity>
     <entity name="Store" representedClassName=".Store" syncable="YES">
-        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="toImage" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Image" inverseName="toStore" inverseEntity="Image" syncable="YES"/>
         <relationship name="toItem" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Item" inverseName="toStore" inverseEntity="Item" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Item" positionX="-54" positionY="-9" width="128" height="150"/>
         <element name="Image" positionX="-81" positionY="-261" width="128" height="90"/>
-        <element name="Store" positionX="178" positionY="-351" width="128" height="90"/>
+        <element name="Item" positionX="-54" positionY="-9" width="128" height="150"/>
         <element name="ItemType" positionX="216" positionY="-108" width="128" height="75"/>
+        <element name="Store" positionX="178" positionY="-351" width="128" height="88"/>
     </elements>
 </model>

@@ -59,14 +59,14 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text=" $ 749" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DEq-gD-kjr">
-                                                            <rect key="frame" x="143" y="24" width="75" height="21"/>
+                                                            <rect key="frame" x="143" y="24" width="248" height="21"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Apple" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SId-AG-9x4">
-                                                            <rect key="frame" x="143" y="-3" width="68" height="33"/>
+                                                            <rect key="frame" x="143" y="-3" width="262" height="33"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
@@ -111,7 +111,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="690" y="106.875"/>
+            <point key="canvasLocation" x="688.40579710144937" y="106.79347826086958"/>
         </scene>
         <!--Add/Edit-->
         <scene sceneID="AYb-ye-pTn">
@@ -143,6 +143,9 @@
                                 <state key="normal" title="Save Item">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="Savepressed:" destination="ZA2-qf-ctP" eventType="touchUpInside" id="imF-i5-7XC"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tittle" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="okP-FE-qPb">
                                 <rect key="frame" x="106" y="72" width="302" height="25"/>
@@ -202,6 +205,8 @@
                     <connections>
                         <outlet property="details" destination="2Yr-qs-Y3t" id="H1h-Rb-zEH"/>
                         <outlet property="price" destination="cSH-Dw-Ehv" id="snV-9Q-L7K"/>
+                        <outlet property="saveBTN" destination="yGS-9Q-WAL" id="pnV-Cb-wWW"/>
+                        <outlet property="storePicker" destination="9st-rJ-NM7" id="I4X-Mf-xCV"/>
                         <outlet property="tittle" destination="okP-FE-qPb" id="svC-In-IgF"/>
                     </connections>
                 </viewController>
