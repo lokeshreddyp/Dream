@@ -50,6 +50,27 @@ class MainVC: UIViewController ,UITableViewDelegate , UITableViewDataSource, NSF
     }
     
     
+    //pass to itemdetailsVC
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if let objs = fetchresultscontroller.fetchedObjects, objs.count > 0 {
+            let items = objs[indexPath.row]
+            performSegue(withIdentifier: "ItemsdetailsVC", sender: items)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     
+        if  segue.identifier == "ItemsdetailsVC" {
+            if  let destination  = segue.destination as? ItemsdetailsVC {
+                if let item = sender as? Item {
+                    destination.itemtoedit = item
+                }
+            }
+            
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
        
         if let sections = fetchresultscontroller.sections

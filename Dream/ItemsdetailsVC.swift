@@ -14,7 +14,7 @@ class ItemsdetailsVC: UIViewController ,UITextFieldDelegate ,UIPickerViewDelegat
     
     var stores = [Store]()
     
-    
+    var itemtoedit : Item?
     @IBOutlet weak var tittle: UITextField!
     
     @IBOutlet weak var price: UITextField!
@@ -43,9 +43,10 @@ class ItemsdetailsVC: UIViewController ,UITextFieldDelegate ,UIPickerViewDelegat
         storePicker.delegate = self
         storePicker.dataSource = self
         
+    
         
-        //insert data into coredata
-       
+        
+      
         
         
        // create store names
@@ -60,9 +61,18 @@ class ItemsdetailsVC: UIViewController ,UITextFieldDelegate ,UIPickerViewDelegat
 //        let store4  = Store(context: appdelegate_context)
 //        store4.name = "Jcpenny"
         
+        //save the data to coredata
         appdelegate.saveContext()
         
+        
         teststores()
+        
+        
+        //insert data into coredata
+        if itemtoedit != nil {
+            loadItemdata()
+            
+        }
 
     }
     
@@ -111,7 +121,18 @@ class ItemsdetailsVC: UIViewController ,UITextFieldDelegate ,UIPickerViewDelegat
     
     @IBAction func Savepressed(_ sender: UIButton) {
         
-let item = Item(context: appdelegate_context)
+        var item : Item!
+        
+        
+        
+        if itemtoedit == nil {
+            item = Item(context: appdelegate_context)
+        }
+        
+        else {
+            item = itemtoedit
+        }
+//let item = Item(context: appdelegate_context)
         if let tittle = tittle.text {
             item.tittle = tittle
         }
@@ -138,6 +159,31 @@ let item = Item(context: appdelegate_context)
         
     }
     
-    
+    func loadItemdata() {
+        if let item = itemtoedit {
+           tittle.text = item.tittle
+           price.text = "\(item.price)"
+           details.text = item.details
+            
+            //to check whether store exists or not
+            if let store  = item.toStore {
+        var index  = 0
+        repeat {
+            let s  = stores[index]
+            if s.name == store.name {
+                storePicker.selectRow(index,
+            inComponent: 0, animated: false)
+                break
+            }
+            index += 1
+            
+            
+        }
+            while (index < stores.count)
+                
+        
+            }
+        }
+    }
     
 }

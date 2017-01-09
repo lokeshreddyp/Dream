@@ -37,11 +37,11 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ItemCell" rowHeight="102" id="gpT-6b-gu8" customClass="ItemCell" customModule="Dream" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ItemCell" rowHeight="102" id="gpT-6b-gu8" customClass="ItemCell" customModule="Dream" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="413" height="102"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gpT-6b-gu8" id="VoD-3T-tkO">
-                                            <rect key="frame" x="0.0" y="0.0" width="413" height="102"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="413" height="101"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view clipsSubviews="YES" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="vPA-gW-uJb">
