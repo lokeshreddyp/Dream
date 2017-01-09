@@ -9,12 +9,13 @@
 import UIKit
 import CoreData
 
-class ItemsdetailsVC: UIViewController ,UITextFieldDelegate ,UIPickerViewDelegate , UIPickerViewDataSource{
+class ItemsdetailsVC: UIViewController ,UITextFieldDelegate ,UIPickerViewDelegate , UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
 
     
     var stores = [Store]()
     
     var itemtoedit : Item?
+    var imagePicker :UIImagePickerController!
     @IBOutlet weak var tittle: UITextField!
     
     @IBOutlet weak var price: UITextField!
@@ -23,6 +24,8 @@ class ItemsdetailsVC: UIViewController ,UITextFieldDelegate ,UIPickerViewDelegat
     @IBOutlet weak var storePicker: UIPickerView!
     
     @IBOutlet weak var details: UITextField!
+    
+    @IBOutlet weak var thumbimg: UIImageView!
     
     //keyboard hides when we click on return button insoftware keyboard
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -43,8 +46,8 @@ class ItemsdetailsVC: UIViewController ,UITextFieldDelegate ,UIPickerViewDelegat
         storePicker.delegate = self
         storePicker.dataSource = self
         
-    
-        
+    imagePicker = UIImagePickerController()
+imagePicker.delegate = self
         
       
         
@@ -123,6 +126,10 @@ class ItemsdetailsVC: UIViewController ,UITextFieldDelegate ,UIPickerViewDelegat
         
         var item : Item!
         
+        //create new image entity
+        let picture = Image(context: appdelegate_context)
+        picture.image = thumbimg.image
+        
         
         
         if itemtoedit == nil {
@@ -132,6 +139,9 @@ class ItemsdetailsVC: UIViewController ,UITextFieldDelegate ,UIPickerViewDelegat
         else {
             item = itemtoedit
         }
+        
+        //assigning entity to entity
+        item.toImage = picture
 //let item = Item(context: appdelegate_context)
         if let tittle = tittle.text {
             item.tittle = tittle
@@ -164,7 +174,7 @@ class ItemsdetailsVC: UIViewController ,UITextFieldDelegate ,UIPickerViewDelegat
            tittle.text = item.tittle
            price.text = "\(item.price)"
            details.text = item.details
-            
+            thumbimg.image = item.toImage as? UIImage
             //to check whether store exists or not
             if let store  = item.toStore {
         var index  = 0
@@ -185,5 +195,33 @@ class ItemsdetailsVC: UIViewController ,UITextFieldDelegate ,UIPickerViewDelegat
             }
         }
     }
+    @IBAction func DeleteBarBTNpressed(_ sender: UIBarButtonItem) {
+        
+        if itemtoedit != nil {
+            appdelegate_context.delete(itemtoedit!)
+            appdelegate.saveContext()
+        }
+        
+        _ = navigationController?.popViewController(animated: true
+        )
+    }
+    
+    
+    @IBAction func ImgBTNpressed(_ sender: UIButton) {
+        present(imagePicker, animated: true, completion: nil)
+        
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let img = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            thumbimg.image = img
+        }
+        
+        imagePicker.dismiss(animated: true, completion: nil)
+    }
+    
+    
+    
+    
     
 }

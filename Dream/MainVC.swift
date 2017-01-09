@@ -101,7 +101,22 @@ let fetchRequest : NSFetchRequest<Item> = Item.fetchRequest()
         
 let dateSort = NSSortDescriptor(key: "created", ascending: false)
 
-fetchRequest.sortDescriptors = [dateSort]
+        
+        let priceSort = NSSortDescriptor(key:"price",ascending: true)
+    let titleSort = NSSortDescriptor(key: "title", ascending: true)
+        
+        
+        if segmentedcontrol.selectedSegmentIndex == 0 {
+          fetchRequest.sortDescriptors = [dateSort]
+        }
+        
+        else if segmentedcontrol.selectedSegmentIndex == 1 {
+        fetchRequest.sortDescriptors = [priceSort]
+        }
+        else if segmentedcontrol.selectedSegmentIndex == 2 {
+            fetchRequest.sortDescriptors = [titleSort]
+        }
+        
         
         let fetchresultscontroller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext:appdelegate_context, sectionNameKeyPath: nil, cacheName:nil)
         
@@ -181,12 +196,12 @@ fetchRequest.sortDescriptors = [dateSort]
         
     }
     
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+   
+    @IBAction func segmentedControl(_ sender: UISegmentedControl) {
+        
+attemptFetch()
+        tableview.reloadData()
+        
     }
-
-
 }
 
